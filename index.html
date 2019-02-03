@@ -1,0 +1,910 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>国民体质监测</title>
+    <link rel="stylesheet" href="./static/css/common.css">
+    <link rel="stylesheet/less" type="text/less" href="./static/css/index.less">
+    <script src="static/js/less.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="tab">
+            <!--评测结果-->
+            <div class="active evaluating">
+                <span>评测结果</span>
+            </div>
+            <div class="health">
+                <em style="float: left;">|</em>
+                <span>健康风险</span>
+                <em style="float: right;">|</em></div>
+            <div class="suggest">
+                <span>改善建议</span>
+            </div>
+        </div>
+        <!--我的评测结果-->
+        <div class="myEvaluating" >
+            <div style="background: linear-gradient(to right top,#67ccfb,#2ab5f4);margin-bottom: -.6rem;">
+                <a  class="share" href="share.html">
+                    <img  src="./static/images/share.png" alt="">
+                </a>
+                <div class="echarts-item" id="myEvaluating" style="background: linear-gradient(to right top,#67ccfb,#2ab5f4);"></div>
+                <!--优势/不足-->
+                <div class="choose">
+                    <a href="myAdvantage.html" class="advantage">优势</a>
+                    <a href="myInsufficient.html" class="insufficient">不足</a>
+                </div>
+                <img src="./static/images/wave.png" alt="" style="width: 100%;padding-top: .5rem;">
+
+            </div>
+
+            <div class="banxin">
+                <div class="ranking">
+                    <div class="half nationwide">
+                        <span class="bgc average"></span>
+                        <span>全国排名</span>
+                        <span class="number"></span>
+                    </div>
+                    <span class="line"></span>
+                    <div class="half province">
+                        <span class="bgc average"></span>
+                        <span>全省排名</span>
+                        <span class="number"></span>
+                    </div>
+                </div>
+                <!--体质成绩单-->
+                <div class="classify active">
+                    <img src="./static/images/physical.png" alt="">
+                    <span>体质成绩单</span>
+                    <img class="next" src="./static/images/next.png" alt="">
+                </div>
+                <div class="transcript">
+                    <!--我的体质成绩单-->
+                    <div class="echarts-item" id="myTranscript"></div>
+                </div>
+                <!--体质趋势-->
+                <div class="classify active">
+                    <img src="./static/images/tendency.png" alt="">
+                    <span>体质趋势</span>
+                    <img class="next" src="./static/images/next.png" alt="">
+                </div>
+                <div class="box">
+                    <div id="ulBox">
+                        <ul class="tzqsUl">
+                            <li class="active total">总分</li>
+                            <li id="stature">身高标准体重</li>
+                            <li id="vitalCapacity">肺活量</li>
+                            <li id="step">台阶指数</li>
+                            <li id="grip">握力</li>
+                            <li id="pushUp">俯卧撑</li>
+                            <li id="jump">纵跳</li>
+                            <li id="reach">坐位体前屈</li>
+                            <li id="stand">闭眼单脚站立</li>
+                        </ul>
+                    </div>
+                    <div class="echarts-item" id="myTendency"></div>
+                    <div class="echarts-item" id="sandian"></div>
+
+                </div>
+
+            </div>
+        </div>
+
+
+        <!--健康风险-->
+        <div class="healthRisk" id="healthRisk">
+            <!--柱状图-->
+            <div class="echarts-item" id="mtHealthRisk" style="width: 100%;"></div>
+
+            <div class="list">
+                <div class="classify active">
+                    <img src="./static/images/bone.png" alt="">
+                    <span>桡骨骨质疏松风险</span>
+                    <img class="next" src="./static/images/next.png" alt="">
+                </div>
+                <div class="content">
+                    <!--危害-->
+                    <div class="harm">
+                        <p>
+                            <img src="./static/images/attention1.png" alt="">
+                            <span class="title">危害</span>
+                        </p>
+                        <ul>
+                            <li>1.桡骨骨折</li>
+                            <li>2.骨头疼痛</li>
+                        </ul>
+                    </div>
+                    <!--问题-->
+                    <div class="problem">
+                        <p>
+                            <img src="./static/images/question.png" alt="">
+                            <span class="title">我的桡骨骨质疏松风险为什么高? </span>
+                        </p>
+                        <ul>
+                            <li class="tip">提示: 勾选您具有的生活方式, 帮助我们更好的为您提供改善方案！</li>
+                            <li>
+                                <label>
+                                    <input type="checkbox" value="低钙饮食">
+                                    <span>低钙饮食</span>
+                                </label>
+                            </li>
+                            <li>
+                                <label>
+                                    <input type="checkbox" value="低钙饮食1">
+                                    <span>缺乏锻炼, 肌肉力量差</span>
+                                </label>
+                            </li>
+                            <li>
+                                <label>
+                                    <input type="checkbox" value="低钙饮食2">
+                                    <span>雌性激素缺乏</span>
+                                </label>
+                            </li>
+                            <li>
+                                <label>
+                                    <input type="checkbox" value="低钙饮食3">
+                                    <span>遗传</span>
+                                </label>
+                            </li>
+                        </ul>
+                    </div>
+                    <p class="toAdvice">
+                        <button >查看改善建议</button>
+                    </p>
+                </div>
+            </div>
+            <div class="list">
+                <div class="classify active">
+                    <img src="./static/images/tumble.png" alt="">
+                    <span>跌倒风险</span>
+                    <img class="next" src="./static/images/next.png" alt="">
+                </div>
+                <div class="content">
+                    <!--危害-->
+                    <div class="harm">
+                        <p>
+                            <img src="./static/images/attention1.png" alt="">
+                            <span class="title">危害</span>
+                        </p>
+                        <ul>
+                            <li>1.软组织损伤</li>
+                            <li>2.脑损伤</li>
+                            <li>3.骨折</li>
+                            <li>4.脱臼</li>
+                        </ul>
+                    </div>
+                    <!--问题-->
+                    <div class="problem">
+                        <p>
+                            <img src="./static/images/question.png" alt="">
+                            <span class="title">我的跌倒风险为什么高? </span>
+                        </p>
+                        <ul>
+                            <li class="tip">提示: 勾选您具有的生活方式, 帮助我们更好的为您提供改善方案！</li>
+                            <li>
+                                <label>
+                                    <input type="checkbox" value="地面湿滑">
+                                    <span>地面湿滑</span>
+                                </label>
+                            </li>
+                            <li>
+                                <label>
+                                    <input type="checkbox" value="年龄">
+                                    <span>年龄</span>
+                                </label>
+                            </li>
+                            <li>
+                                <label>
+                                    <input type="checkbox" value="骨质疏松">
+                                    <span>骨质疏松</span>
+                                </label>
+                            </li>
+                            <li>
+                                <label>
+                                    <input type="checkbox" value="平衡能力差">
+                                    <span>平衡能力差</span>
+                                </label>
+                            </li>
+                            <li>
+                                <label>
+                                    <input type="checkbox" value="反应慢">
+                                    <span>反应慢</span>
+                                </label>
+                            </li>
+                            <li>
+                                <label>
+                                    <input type="checkbox" value="视力障碍">
+                                    <span>视力障碍</span>
+                                </label>
+                            </li>
+                        </ul>
+                    </div>
+                    <p class="toAdvice">
+                        <button class="">查看改善建议</button>
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+        <!--改善建议-->
+        <div class="improveSuggestion">
+        </div>
+    </div>
+</body>
+<script src="static/js/rem.js"></script>
+<script src="static/js/jquery.min.js"></script>
+<script src="static/js/echarts.min3X.js"></script>
+<script src="static/js/common.js"></script>
+<script src="static/js/config.js"></script>
+<script>
+    $(function () {
+        //点击切换tab栏
+        $("body").on("click", ".tab div", function () {
+            $(this).addClass("active").siblings().removeClass("active");
+        });
+        $(".evaluating").click(function () {
+            $(".healthRisk").hide();
+            $(".improveSuggestion").hide();
+            $(".myEvaluating").show();
+        });
+        $(".health").click(function () {
+            $(".myEvaluating").hide();
+            $(".improveSuggestion").hide();
+            $(".healthRisk").show();
+        });
+        $(".suggest").click(function () {
+            $(".myEvaluating").hide();
+            $(".healthRisk").hide();
+            $(".improveSuggestion").show();
+        });
+
+        $("body").on("click", ".tzqsUl li", function (e) {
+            var type = e.target.id;
+            console.log(type);
+            $(this).addClass("active").siblings().removeClass("active");
+            if($(this).hasClass("total")){
+                $("#sandian").hide();
+                $("#myTendency").show();
+                tendency('total')
+            }else{
+                $("#myTendency").hide();
+                $("#sandian").show();
+                tendency(type)
+            }
+        });
+        //=================== 我的评测结果 ==================
+        var myEvaluating = echarts.init(document.getElementById('myEvaluating'));
+        var evaluatings = {
+            // backgroundColor: "#3dbdf6",
+            backgroundColor: "linear-gradient(to right top,#67ccfb,#2ab5f4)",
+            title: {
+                text: "",
+                textStyle: {
+                    color: "#fff",
+                    fontWeight: 400,
+                },
+                left: "center",
+                top: "10"
+            },
+            tooltip: {
+                trigger: 'item',
+                formatter: "{a} <br/>{b} : {c} ({d}%)"
+            },
+            color: ["#fff", "#44C0F6"],
+            series: [{
+                name: '得分',
+                type: 'pie',
+                radius: ['60%', '65%'],
+                label: {
+                    normal: {
+                        position: 'center'
+                    }
+                },
+                data: [{
+                    value: 80,
+                    name: '我的分数',
+                    label: {
+                        normal: {
+                            formatter: '',
+                            textStyle: {
+                                fontSize: 50
+                            }
+                        }
+                    },
+                    itemStyle: {
+                        normal: {
+                            color: '#fff',
+                            shadowColor: '#fff',
+                            shadowBlur: 10
+                        }
+                    }
+                }, {
+                    value: 20,
+                    name: '剩余分数',
+                    label: {
+                        normal: {
+                            formatter: '',
+                            textStyle: {
+                                color: '#fff',
+                                fontSize: 20
+                            }
+                        }
+                    },
+                    itemStyle: {
+                        normal: {
+                            color: '#44C0F6',
+                            shadowColor: '#44C0F6',
+                            shadowBlur: 10
+                        }
+                    },
+                    tooltip: {
+                        show: false
+                    },
+                    hoverAnimation: false
+                }]
+            }]
+        };
+        myEvaluating.setOption(evaluatings);
+        //设置我的评测结果数据
+        ajaxRequest(AJAX_API.myEvaluating, "GET", {}, function (res) {
+            var res = res;
+            if (res.code === 200) {
+                myEvaluating.setOption({
+                    // title: {
+                    //     text: res.uname + '在' + res.time + "\n\n进行中的体质测试中取得了以下成绩"
+                    // },
+                    series: [{
+                        data: [{
+                                value: res.value1,
+                                label: {
+                                    normal: {
+                                        formatter: '{d} ',
+                                        textStyle: {
+                                            fontSize: 50
+                                        }
+                                    }
+                                },
+                            },
+                            {
+                                value: res.value2,
+                                label: {
+                                    normal: {
+                                        formatter: '\n\n' + res.dsc1 + '\n\n' + res
+                                            .dsc2,
+                                        textStyle: {
+                                            color: '#fff',
+                                            fontSize: 20
+                                        }
+                                    }
+                                },
+                            }
+                        ]
+                    }]
+                })
+            }
+        });
+
+        //=================== 我的体质成绩单 =================
+        var myTranscript = echarts.init(document.getElementById('myTranscript'));
+        var transcripts = {
+            title: {
+                text: '根据您的体质成绩,您的体质年龄是',
+                left: "center",
+                top: "20",
+                textStyle:{
+                    fontSize: 14,
+                    fontWeight:400
+                },
+                subtextStyle: {
+                    color: "red",
+                    fontSize: 16
+                }
+            },
+            tooltip: {},
+            legend: {
+                data: ['全国均值', '我的体质'],
+                left: "center",
+                bottom: "20"
+            },
+            radar: {
+                // shape: 'circle',
+                center: ['50%', '50%'], // 图的位置
+                radius: "55%",
+                indicator: [{
+                        name: '身高标准体重',
+                        max: 120
+                    },
+                    {
+                        name: '闭眼单脚跳',
+                        max: 120
+                    },
+                    {
+                        name: '选择反射时',
+                        max: 120
+                    },
+                    {
+                        name: '坐位体前屈',
+                        max: 120
+                    },
+                    {
+                        name: '纵跳',
+                        max: 120
+                    },
+                    {
+                        name: '俯卧撑',
+                        max: 120
+                    },
+                    {
+                        name: '握力',
+                        max: 120
+                    },
+                    {
+                        name: '台阶指数',
+                        max: 120
+                    },
+                    {
+                        name: '肺活量',
+                        max: 120
+                    }
+                ],
+                name: {
+                    textStyle: {
+                        color: '#999999',
+                    }
+                },
+                splitArea: {
+                    areaStyle: {
+                        color: ['#fff', '#fff', '#fff', '#fff'],
+                        shadowColor: 'rgba(0, 100, 0, 0.3)'
+                    }
+                },
+            },
+            series: [{
+                type: 'radar',
+                data: []
+            }]
+        };
+        myTranscript.setOption(transcripts);
+
+        // 设置我的体质成绩单数据
+        ajaxRequest(AJAX_API.myTranscript, "GET", {}, function (res) {
+            var res = res;
+            if (res.code === 200) {
+                var age = res.age,
+                    wdname = res.list.wode.name,
+                    wdvalue = res.list.wode.value,
+                    qgname = res.list.pingjun.name,
+                    qgvalue = res.list.pingjun.value;
+                myTranscript.setOption({
+                    title: {
+                        subtext: age + "岁"
+                    },
+                    series: [{
+                        data: [{
+                                name: wdname,
+                                value: wdvalue,
+                                itemStyle: {
+                                    normal: {
+                                        color: '#62C9E9'
+                                    }
+                                },
+                                areaStyle: {
+                                    normal: {
+                                        color: '#DAF1DF'
+                                    }
+                                }
+                            },
+                            {
+                                name: qgname,
+                                value: qgvalue,
+                                itemStyle: {
+                                    normal: {
+                                        color: '#B9D966'
+                                    }
+                                },
+                                areaStyle: {
+                                    normal: {
+                                        color: '#EEF8DD'
+                                    }
+                                }
+                            }
+                        ]
+                    }]
+                })
+            }
+        })
+
+        //=================== 我的体质趋势 =================
+        var myTendency = echarts.init(document.getElementById('myTendency'));
+        var tendencys = {
+
+            tooltip: {
+                trigger: 'axis'
+            },
+
+            grid: {
+                left: '3%',
+                right: '4%',
+                bottom: '3%',
+                containLabel: true
+            },
+            xAxis: [{
+                type: 'category',
+                boundaryGap: false,
+                data: ['2018-01-11', '2018-02-11', '2018-03-11', '2018-04-11', '2018-05-11'],
+                axisTick: {
+                    show: false
+                }
+            }],
+            yAxis: [{
+                type: 'value',
+                name: "单位 : 分",
+                axisTick: {
+                    show: false
+                }
+            }],
+            series: [{
+                    name: '全国均值',
+                    type: 'line',
+                    stack: '总量',
+                    itemStyle: {
+                        normal: { //颜色渐变函数 前四个参数分别表示四个位置依次为左、下、右、上
+                            color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                                offset: 0,
+                                color: '#81befd' // 0% 处的颜色
+                            }, {
+                                offset: 0.4,
+                                color: '#e4f2ff' // 100% 处的颜色
+                            }, {
+                                offset: 1,
+                                color: '#fff' // 100% 处的颜色
+                            }]), //背景渐变色
+                            lineStyle: { // 系列级个性化折线样式
+                                width: 2,
+                                type: 'solid',
+                                color: "#33b9f5" //折线的颜色
+                            }
+                        },
+                        emphasis: {
+                            color: '#33b9f5',
+                            lineStyle: { // 系列级个性化折线样式
+                                width: 2,
+                                type: 'dotted',
+                                color: "0180ff"
+                            }
+                        }
+                    }, //线条样式
+                    symbolSize: 5, //折线点的大小
+                    label: {
+                        normal: {
+                            show: true,
+                            position: 'top'
+                        }
+                    },
+
+                    areaStyle: {
+                        normal: {}
+                    },
+                    data: []
+                },
+                {
+                    data: [],
+                    type: 'line',
+                    name: '本省均值',
+                    itemStyle: {
+                        normal: {
+                            lineStyle: { // 系列级个性化折线样式
+                                width: 2,
+                                type: 'solid',
+                                color: "#FF9833" //折线的颜色
+                            }
+                        }
+                    }
+                },
+                {
+                    data: [],
+                    type: 'line',
+                    name: '我的身高',
+                    itemStyle: {
+                        normal: {
+                            lineStyle: { // 系列级个性化折线样式
+                                width: 2,
+                                type: 'solid',
+                                color: "#AADB4E" //折线的颜色
+                            }
+                        }
+                    }
+                }
+            ]
+        }
+        myTendency.setOption(tendencys);
+
+        //设置我的体质趋势数据
+        ajaxRequest(AJAX_API.myTendency, "GET", {}, function (res) {
+            var res = res;
+            if (res.code === 200) {
+                myTendency.setOption({
+                    series: [{
+                            name: '全国均值',
+                            type: 'line',
+                            stack: '总量',
+                            areaStyle: {
+                                normal: {}
+                            },
+                            data: res.list[2].data
+                        },
+                        {
+                            data: res.list[1].data,
+                            type: 'line',
+                            name: '本省均值',
+                        },
+                        {
+                            data: res.list[0].data,
+                            type: 'line',
+                            name: '我的身高',
+                        }
+                    ]
+                })
+            }
+        });
+
+        //健康风险
+        var mtHealthRisk = echarts.init(document.getElementById('mtHealthRisk'));
+        var healthRisks = {
+            color: ['#03B0FD', '#AADB4E', "#FF9126", '#03B0FD', '#AADB4E', "#FF9126", '#03B0FD'],
+            tooltip: {
+                trigger: 'axis',
+                axisPointer: {
+                    type: 'shadow'
+                },
+                formatter: "{b} <br> 健康状况: {c}%"
+            },
+            /*legend: {
+                data: [date]
+            },*/
+            grid: {
+                left: '4%',
+                right: '4%',
+                bottom: '2%',
+                containLabel: true
+            },
+            xAxis: {
+                type: 'value',
+                boundaryGap: [0, 0.01],
+                min: 0,
+                max: 100,
+                interval: 20,
+                axisTick: {
+                    show: false
+                },
+                axisLabel: {
+                    formatter: '{value}%',
+                    textStyle: {
+                        //color: '#fff',
+                        fontWeight: '80'
+                    }
+                }
+            },
+            yAxis: {
+                type: 'category',
+                data: ['心血管疾病', '桡骨骨质疏松', '下背痛', '跌倒', '运动损伤', '肺部疾病', '代谢综合征'],
+                axisLabel: {
+                    show: true,
+                    interval: 0,
+                    rotate: 0,
+                    margin: 10,
+                    inside: false,
+                    textStyle: {
+                        //color: '#fff',
+                        fontWeight: '50'
+                    }
+                }
+            },
+            series: [{
+                type: 'bar',
+                barWidth: 15,
+                label: {
+                    normal: {
+                        show: true,
+                        // formatter: '{c}',
+                        formatter: function (v) {
+                            var val = v.data;
+                            if (val == 0) {
+                                return '';
+                            }
+                            return val;
+                        },
+                        color: '#fff'
+                    }
+                },
+                data: [],
+                itemStyle: {
+                    normal: {
+                        color: function (params) {
+                            console.log(params)
+                            var colorList = ['#03B0FD', '#AADB4E', "#FF9126", '#03B0FD',
+                                '#AADB4E', "#FF9126", '#03B0FD'
+                            ];
+                            return colorList[params.dataIndex];
+                        }
+                    }
+
+                }
+            }]
+        };
+        mtHealthRisk.setOption(healthRisks);
+        //设置健康风险数据
+        ajaxRequest(AJAX_API.healthRisk, "GET", {}, function (res) {
+            var res = res;
+            if (res.code === 200) {
+                mtHealthRisk.setOption({
+                    series: [{
+                        data: res.data
+                    }]
+                })
+            }
+        });
+
+        //散点图
+        var myChart = echarts.init(document.getElementById('sandian'));
+        var option = {
+            color: ["#47B6F1", "#FDAD61", "#C4E66C"],
+            tooltip: {
+
+            },
+            legend: {
+                data: ["我的成绩", "本省均值", "全国均值"],
+                left: "center",
+                bottom: "20"
+            },
+            xAxis: {
+                type: 'category',
+                data: ["2018-01-11"]
+            },
+            yAxis: {
+                type: 'value',
+                splitLine: {
+                    lineStyle: {
+                        type: 'dashed',
+                        show: false
+                    }
+                },
+            },
+            series: []
+        };
+        myChart.setOption(option);
+        //设置数据
+        function tendency(type){
+            console.log(type)
+            ajaxRequest(AJAX_API.sandian, "GET", {type:type}, function (res) {
+                var res = res;
+                if (res.code === 200) {
+                    var wdvalue = res.list.wode.value,
+                        bsvalue = res.list.bs.value,
+                        qgvalue = res.list.qg.value;
+                    myChart.setOption({
+                        series: [{
+                            type: 'scatter',
+                            name: "我的成绩",
+                            data: wdvalue
+                        }, {
+                            type: 'scatter',
+                            name: "本省均值",
+                            data: bsvalue
+                        }, {
+                            type: 'scatter',
+                            name: "全国均值",
+                            data: qgvalue
+                        }]
+                    })
+                }
+            })
+        }
+        tendency('total');
+
+        //获取排名数据
+        ajaxRequest(AJAX_API.ranking, "GET", {}, function (res) {
+            console.log(res);
+            if (res.code == 200) {
+                $(".nationwide .average").html("全国均值"+res.data.nationwide.average);
+                $(".nationwide .number").html(res.data.nationwide.total +"/"+res.data.nationwide.mine);
+                $(".province .average").html("本省均值"+res.data.province.average);
+                $(".province .number").html(res.data.province.total +"/"+res.data.province.mine);
+            }
+        });
+        //点击查看建议
+        $("body").on("click",".toAdvice",function () {
+            $(this).prev().find("input")
+            console.log($(this).prev().find("input"));
+            var ipts = $(this).prev().find("input");
+            // console.log(ipts:checkbox:checked)
+            $.each($('input:checkbox:checked'),function(){
+                console.log("你选了："+
+                    $('input[type=checkbox]:checked').length+"个，其中有："+$(this).val());
+            });
+            $(".suggest").click()
+        });
+        //获取改善建议数据
+        ajaxRequest(AJAX_API.improveSuggestion, "GET", {}, function (res) {
+            console.log(res);
+            if(res.code==200){
+                var data = res.data;
+                var html = "";
+                html+='<div class="classify active">\
+                        <img src="./static/images/run.png" alt="">\
+                        <span>'+data.sportsAdvice.title+'</span>\
+                        <img class="next" src="./static/images/next.png" alt="">\
+                       </div>\
+                       <div class="content">\
+                        <ul>\
+                            <li>\
+                                <img src="./static/images/target.png" alt="">\
+                                <p>\
+                                    <span class="title">锻炼目标：</span>\
+                                    <span>'+data.sportsAdvice.target+'</span>\
+                                </p>\
+                            </li>\
+                            <li>\
+                                <img src="./static/images/cycle.png" alt="">\
+                                <p>\
+                                    <span class="title">有氧运动：</span>\
+                                    <span>'+data.sportsAdvice.sport+'</span>\
+                                </p>\
+                            </li>\
+                            <li>\
+                                <img src="./static/images/power.png" alt="">\
+                                <p>\
+                                    <span class="title">全身力量：</span>\
+                                    <span>'+data.sportsAdvice.power+'</span>\
+                                </p>\
+                            </li>\
+                            <li>\
+                                <img src="./static/images/yoga.png" alt="">\
+                                <p>\
+                                    <span class="title">坚韧练习：</span>\
+                                    <span>'+data.sportsAdvice.exercise+'</span>\
+                                </p>\
+                            </li>\
+                        </ul>\
+                       </div>'
+                       for(var i = 0;i<data.classify.length;i++){
+                           html+='<div class="classify active">\
+                                    <img src="./static/images/nutrition.png" alt="">\
+                                    <span>'+data.classify[i].title+'</span>\
+                                    <img class="next" src="./static/images/next.png" alt="">\
+                                  </div>'
+                                  var list = data.classify[i].list
+                                  html+='<div class="content">'
+                                  html+='<ul>'
+                                  for(var j = 0;j<list.length;j++){
+                                      html+='<li>\
+                                            <span class="circle">'+(j+1)+'</span>\
+                                            <p>\
+                                                <span>'+list[j].advices+'</span>\
+                                            </p>\
+                                        </li>'
+                                  }
+                                  html+='</ul>'
+                                  html+='</div>'
+                       }
+                       
+                $(".improveSuggestion").append(html)
+            }else{
+                alert(res.msg)
+            }
+        })
+    });
+
+    //onload之后柱状图渲染完成再隐藏，否则柱状图获取不到宽度
+    window.onload=function () {
+        $(".healthRisk").hide();
+        $("#sandian").hide();
+    }
+</script>
+
+</html>

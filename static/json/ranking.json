@@ -1,0 +1,16 @@
+{
+"code":200,
+  "msg":"成功",
+  "data":{
+    "nationwide":{
+      "average":52,
+      "total":4312342,
+        "mine":213412
+    },
+    "province":{
+      "average":63,
+      "total":6312342,
+      "mine":413412
+    }
+  }
+}

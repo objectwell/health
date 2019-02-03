@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>我的优势</title>
+    <link rel="stylesheet" href="./static/css/common.css">
+    <link rel="stylesheet/less" type="text/less" href="./static/css/myAdvantage.less">
+    <script src="static/js/less.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="result">
+        <img src="./static/images/back.png" alt="">
+        <p>
+            本次共测试<span class="color_orange" id="total"></span>项 <br>
+            其中有<span class="color_orange" id="advantage"></span>项优势
+        </p>
+    </div>
+    <!--列表数据-->
+    <div class="list_div">
+        <!--&lt;!&ndash;身高体重&ndash;&gt;-->
+        <!--<div class="list_title">-->
+            <!--<div class="left">-->
+                <!--<img src="./static/images/meter.png" alt="">-->
+                <!--<span>身高(164cm) 体重</span>-->
+            <!--</div>-->
+            <!--<div class="right">-->
+                <!--<span class="weight">58kg &nbsp;标准</span>-->
+                <!--<img class="next" src="./static/images/next.png" alt="">-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class="content">-->
+            <!--<div class="layout">-->
+                <!--<div class="demo" ></div>-->
+            <!--</div>-->
+            <!--<div class="index">-->
+                <!--<ul>-->
+                    <!--<li>-->
+                        <!--<img src="./static/images/me.png" alt="">-->
+                        <!--<span>您的体型标准, 请继续保持！</span>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                        <!--<img src="./static/images/evaluate.png" alt="">-->
+                        <!--<span>指标评价: 您的身高体重标准属于正常水平,继续保持哦！</span>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                        <!--<img src="./static/images/other.png" alt="">-->
+                        <!--<span>同龄人平均水平: 55.3kg</span>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                        <!--<img src="./static/images/attention.png" alt="">-->
+                        <!--<span class="color_999">指标说明: 该指标反映人体心血管系统和呼吸系统机能水平 , 与您的心血管疾病风险密切相关</span>-->
+                    <!--</li>-->
+                <!--</ul>-->
+            <!--</div>-->
+        <!--</div>-->
+
+        <!--&lt;!&ndash;台阶指数&ndash;&gt;-->
+        <!--<div class="list_title">-->
+            <!--<div class="left">-->
+                <!--<img src="./static/images/step.png" alt="">-->
+                <!--<span>台阶指数</span>-->
+            <!--</div>-->
+            <!--<div class="right">-->
+                <!--<span class="weight">60 &nbsp;良好</span>-->
+                <!--<img class="next" src="./static/images/next.png" alt="">-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class="content">-->
+            <!--&lt;!&ndash;<div class="line" style="height: 60px;background-color: dodgerblue;margin: .4rem 0;"></div>&ndash;&gt;-->
+            <!--<div class="layout">-->
+                <!--<div class="demo" ></div>-->
+            <!--</div>-->
+            <!--<div class="index">-->
+                <!--<ul>-->
+                    <!--<li>-->
+                        <!--<img src="./static/images/me.png" alt="">-->
+                        <!--<span>您的台阶实验相当于35岁的水平</span>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                        <!--<img src="./static/images/evaluate.png" alt="">-->
+                        <!--<span>指标评价: 您的台阶实验属于正常水平,继续保持哦！</span>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                        <!--<img src="./static/images/other.png" alt="">-->
+                        <!--<span>同龄人平均水平: 57.3kg</span>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                        <!--<img src="./static/images/attention.png" alt="">-->
+                        <!--<span class="color_999">指标说明: 该指标反映人体的发育程度和营养状况 , 与您的代谢综合症，心血管疾病风险密切相关</span>-->
+                    <!--</li>-->
+                <!--</ul>-->
+            <!--</div>-->
+        <!--</div>-->
+
+        <!--&lt;!&ndash;纵跳&ndash;&gt;-->
+        <!--<div class="list_title">-->
+            <!--<div class="left">-->
+                <!--<img src="./static/images/jump.png" alt="">-->
+                <!--<span>纵跳</span>-->
+            <!--</div>-->
+            <!--<div class="right">-->
+                <!--<span class="weight">1.3m &nbsp;优秀</span>-->
+                <!--<img class="next" src="./static/images/next.png" alt="">-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class="content">-->
+            <!--<div class="line" style="height: 60px;background-color: dodgerblue;margin: .4rem 0;"></div>-->
+            <!--<div class="index">-->
+                <!--<ul>-->
+                    <!--<li>-->
+                        <!--<img src="./static/images/me.png" alt="">-->
+                        <!--<span>您的纵跳相当于35岁的水平</span>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                        <!--<img src="./static/images/evaluate.png" alt="">-->
+                        <!--<span>指标评价: 您的纵跳属于正常水平,继续保持哦！</span>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                        <!--<img src="./static/images/other.png" alt="">-->
+                        <!--<span>同龄人平均水平: 1.2m</span>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                        <!--<img src="./static/images/attention.png" alt="">-->
+                        <!--<span class="color_999">指标说明: 该指标反映下肢的弹跳力和爆发力 , 与您的运动损伤风险密切相关</span>-->
+                    <!--</li>-->
+                <!--</ul>-->
+            <!--</div>-->
+        <!--</div>-->
+
+        <!--&lt;!&ndash;坐位体前屈&ndash;&gt;-->
+        <!--<div class="list_title">-->
+            <!--<div class="left">-->
+                <!--<img src="./static/images/sit.png" alt="">-->
+                <!--<span>坐位体前屈</span>-->
+            <!--</div>-->
+            <!--<div class="right">-->
+                <!--<span class="weight">1.3m &nbsp;优秀</span>-->
+                <!--<img class="next" src="./static/images/next.png" alt="">-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class="content">-->
+            <!--<div class="line" style="height: 60px;background-color: dodgerblue;margin: .4rem 0;"></div>-->
+            <!--<div class="index">-->
+                <!--<ul>-->
+                    <!--<li>-->
+                        <!--<img src="./static/images/me.png" alt="">-->
+                        <!--<span>您的坐位体前屈相当于35岁的水平</span>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                        <!--<img src="./static/images/evaluate.png" alt="">-->
+                        <!--<span>指标评价: 您的坐位体前屈属于正常水平,继续保持哦！</span>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                        <!--<img src="./static/images/other.png" alt="">-->
+                        <!--<span>同龄人平均水平: 1.2m</span>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                        <!--<img src="./static/images/attention.png" alt="">-->
+                        <!--<span class="color_999">指标说明: 该指标反映躯干，腰，髋这些关键部位的关节，韧带和肌肉的伸展性和弹性，与您的下背痛，运动员损伤风险密切相关</span>-->
+                    <!--</li>-->
+                <!--</ul>-->
+            <!--</div>-->
+        <!--</div>-->
+
+
+    </div>
+</div>
+</body>
+<script src="static/js/rem.js"></script>
+<script src="static/js/jquery.min.js"></script>
+<script src="static/js/common.js"></script>
+<script src="static/js/config.js"></script>
+<script>
+    $(".result img").click(function () {
+        window.history.go(-1);
+    });
+    console.log(1111);
+    ajaxRequest(AJAX_API.myAdvantage, "GET", {}, function (res) {
+        console.log(res);
+        console.log(111);
+        if (res.code == 200) {
+            // var testJson = {
+            //     code:200,
+            //     range:{
+            //         text:["瘦","偏瘦","标准","稍胖","肥胖"],
+            //         data:[48.3,50.9,65.9,71.1],
+            //         color:["#fa0000","#fc9328","#ffca02","#a7dc50","#03affb"],
+            //         nub:5,
+            //         value:86
+            //     }
+            // };
+
+
+            // ======================
+            $("#total").html(res.data.total);
+            $("#advantage").html(res.data.advantage);
+            var data = res.data.classify;
+            for (var i = 0; i < data.length; i++) {
+                var html = "";
+                html += '<div class="classify active">\
+                        <div class="left">\
+                            <img src="./static/images/meter.png" alt="">\
+                            <span>' + data[i].title + '</span>\
+                        </div>\
+                        <div class="right">\
+                            <span class="weight">' + data[i].value + 'kg &nbsp;' + data[i].grade + '</span>\
+                            <img class="next" src="./static/images/next.png" alt="">\
+                        </div>\
+                        </div>\
+                        <div class="content">\
+                            <div class="layout"><div class="range" ></div></div>\
+                            <div class="index">\
+                                <ul>\
+                                    <li>\
+                                        <img src="./static/images/me.png" alt="">\
+                                        <span>' + data[i].description + '</span>\
+                                    </li>\
+                                    <li>\
+                                    <img src="./static/images/evaluate.png" alt="">\
+                                    <span>指标评价: ' + data[i].evaluate + '</span>\
+                                    </li>\
+                                    <li>\
+                                    <img src="./static/images/other.png" alt="">\
+                                    <span>同龄人平均水平: ' + data[i].average + '</span>\
+                                    </li>\
+                                    <li>\
+                                    <img src="./static/images/attention.png" alt="">\
+                                    <span class="color_999">指标说明: ' + data[i].explain + '</span>\
+                                    </li>\
+                                <ul>\
+                            </div>\
+                        </div>';
+                $(".list_div").append(html);
+
+                var range = $(".range");
+                var $ul = $('<ul class="range-ul clearfix"></ul>');
+                var textArr = data[i].rangeText;
+                if(textArr.length>0){
+                    var liWidth = (range.width()-1) / data[i].rangeNub;
+                    $.each(textArr,function(item,text){
+                        var text = text;
+                        var $li = $('<li></li>');
+                        var $rangeText = $('<div class="range-text">'+ text +'</div>').appendTo($li);
+                        var $renge = $('<div class="range-item"></div>').appendTo($li);
+                        $renge.css("background-color",data[i].rangeColor [item]|| "green");
+                        $li.css("width",liWidth);
+                        if(data[i].rangeData[(item)]!=undefined){
+                            var $rangeValue = $('<p class="range-value">'+ data[i].rangeData[(item)] +'</p>').appendTo($li);
+                        }
+                        $ul.append($li)
+                    })
+                }
+                var $dian = $('<span class="range-dian"></span>');
+                left = range.width()*data[i].rangeValue/100;
+                for(var j = 0;j<range.length;j++){
+                    $dian.css("left",left).appendTo(range[j])
+                }
+            }
+            range.append($ul);
+        } else {
+            alert(res.msg)
+        }
+    })
+</script>
+
+</html>

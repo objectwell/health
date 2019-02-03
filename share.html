@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>国民体质监测</title>
+    <link rel="stylesheet" href="./static/css/common.css">
+    <link rel="stylesheet/less" type="text/less" href="./static/css/index.less">
+    <script src="static/js/less.min.js"></script>
+</head>
+<style>
+    .container #myEvaluating{
+        height: 240px;
+    }
+    .container .title{
+        position: relative;
+        color: #fff;
+        text-align: center;
+        font-size: .34rem;
+        padding-top: .6rem;
+    }
+    .container .title .complete{
+        position: absolute;
+        font-weight: 700;
+        font-size: .4rem;
+        color: #ffea87;
+        border: 2px solid #ffea87;
+        padding: .1rem .5rem;
+        -moz-border-radius: 5px;
+        border-radius: 5px;
+        z-index: 99;
+        right: 1.4rem;
+        top: 1.8rem;
+        transform: rotate(-12deg);
+    }
+    .container .title .name,.container .title .time{
+        color: #ffea87;
+    }
+</style>
+<body>
+    <div class="container">
+
+        <!--我的评测结果-->
+        <div class="myEvaluating">
+
+            <div style="background: linear-gradient(to right top,#67ccfb,#2ab5f4);margin-bottom: -.6rem;">
+                <div class="title">
+                    <span class="name"></span>在
+                    <span class="time"></span>进行的<br>
+                    <span>体质测试中取得了如下成绩: </span>
+                    <span class="complete">完 成</span>
+                </div>
+                <div class="echarts-item" id="myEvaluating" style="background: linear-gradient(to right top,#67ccfb,#2ab5f4);"></div>
+                <!--优势/不足-->
+                <img src="./static/images/wave.png" alt="" style="width: 100%;padding-top: .5rem;">
+
+            </div>
+
+            <div class="banxin">
+                <div class="ranking">
+                    <div class="half nationwide">
+                        <span class="bgc average"></span>
+                        <span>全国排名</span>
+                        <span class="number"></span>
+                    </div>
+                    <span class="line"></span>
+                    <div class="half province">
+                        <span class="bgc average"></span>
+                        <span>全省排名</span>
+                        <span class="number"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script src="static/js/rem.js"></script>
+<script src="static/js/jquery.min.js"></script>
+<script src="static/js/echarts.min3X.js"></script>
+<script src="static/js/common.js"></script>
+<script src="static/js/config.js"></script>
+<script>
+    //=================== 我的评测结果 ==================
+    var myEvaluating = echarts.init(document.getElementById('myEvaluating'));
+    var evaluatings = {
+        // backgroundColor: "#3dbdf6",
+        backgroundColor: "linear-gradient(to right top,#67ccfb,#2ab5f4)",
+        title: {
+            text: "",
+            textStyle: {
+                color: "#fff",
+                fontWeight: 400,
+                fontSize:14
+
+            },
+            left: "center",
+            top: "10"
+        },
+        tooltip: {
+            trigger: 'item',
+            formatter: "{a} <br/>{b} : {c} ({d}%)"
+        },
+        color: ["#fff", "#44C0F6"],
+        series: [{
+            name: '得分',
+            type: 'pie',
+            radius: ['60%', '65%'],
+            label: {
+                normal: {
+                    position: 'center'
+                }
+            },
+            data: [{
+                value: 80,
+                name: '我的分数',
+                label: {
+                    normal: {
+                        formatter: '',
+                        textStyle: {
+                            fontSize: 50
+                        }
+                    }
+                },
+                itemStyle: {
+                    normal: {
+                        color: '#fff',
+                        shadowColor: '#fff',
+                        shadowBlur: 10
+                    }
+                }
+            }, {
+                value: 20,
+                name: '剩余分数',
+                label: {
+                    normal: {
+                        formatter: '',
+                        textStyle: {
+                            color: '#fff',
+                            fontSize: 14
+                        }
+                    }
+                },
+                itemStyle: {
+                    normal: {
+                        color: '#44C0F6',
+                        shadowColor: '#44C0F6',
+                        shadowBlur: 10
+                    }
+                },
+                tooltip: {
+                    show: false
+                },
+                hoverAnimation: false
+            }]
+        }]
+    };
+    myEvaluating.setOption(evaluatings);
+    //设置我的评测结果数据
+    ajaxRequest(AJAX_API.myEvaluating, "GET", {}, function (res) {
+        var res = res;
+        console.log(res)
+        if (res.code === 200) {
+            $(".title .name").html(res.uname);
+            $(".title .time").html(res.time);
+            myEvaluating.setOption({
+                // title: {
+                //     text: res.uname + '在' + res.time + "\n\n进行中的体质测试中取得了以下成绩"
+                // },
+                series: [{
+                    data: [{
+                            value: res.value1,
+                            label: {
+                                normal: {
+                                    formatter: '{d} ',
+                                    textStyle: {
+                                        fontSize: 50
+                                    }
+                                }
+                            },
+                        },
+                        {
+                            value: res.value2,
+                            label: {
+                                normal: {
+                                    formatter: '\n\n' + res.dsc1 + '\n\n' + res
+                                        .dsc2,
+                                    textStyle: {
+                                        color: '#fff',
+                                        fontSize: 14
+                                    }
+                                }
+                            },
+                        }
+                    ]
+                }]
+            })
+        }
+    });
+
+    //获取排名数据
+    ajaxRequest(AJAX_API.ranking, "GET", {}, function (res) {
+        console.log(res);
+        if (res.code == 200) {
+            $(".nationwide .average").html("全国均值" + res.data.nationwide.average);
+            $(".nationwide .number").html(res.data.nationwide.total + "/" + res.data.nationwide.mine);
+            $(".province .average").html("本省均值" + res.data.province.average);
+            $(".province .number").html(res.data.province.total + "/" + res.data.province.mine);
+        }
+    });
+</script>
+
+</html>

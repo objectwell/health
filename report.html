@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>查看报告</title>
+    <link rel="stylesheet" href="./static/css/common.css">
+    <link rel="stylesheet/less" type="text/less" href="./static/css/report.less">
+    <script src="static/js/less.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <!--我的健康体适能-->
+        <div class="mine">
+            <div class="echarts-item" id="annulus"></div>
+            <div class="text">
+                <p class="title">健康体适能</p>
+                <p>
+                    <span>活力年龄: <span class="color-blue age"></span></span>
+                    <span>活力币 : <span class="color-blue money"></span></span>
+                </p>
+                <p>
+                    <span>法国大使</span>
+                    <span class="date"></span>
+                </p>
+            </div>
+            <span class="more">查看更多 >></span>
+        </div>
+        <!--国民体质-->
+        <div class="all">
+            <div class="echarts-item" id="annulus1"></div>
+            <div class="text">
+                <p class="title">国民体质</p>
+                <p>
+                    <span>活力年龄: <span class="color-green age"></span></span>
+                    <span>活力币 : <span class="color-green money"></span></span>
+                </p>
+                <p>
+                    <span>法国大使</span>
+                    <span class="date"></span>
+                </p>
+            </div>
+            <span class="more">查看更多 >></span>
+        </div>
+    </div>
+</body>
+<script src="static/js/rem.js"></script>
+<script src="static/js/jquery.min.js"></script>
+<script src="static/js/echarts.min3X.js"></script>
+<script src="static/js/common.js"></script>
+<script src="static/js/config.js"></script>
+<script>
+    $(function () {
+        //获取年龄，活力币数据
+        ajaxRequest(AJAX_API.report, "GET", {}, function (res) {
+            console.log(res);
+            if (res.code == 200) {
+                $(".mine .age").html(res.data.mine.age);
+                $(".mine .money").html(res.data.mine.money);
+                $(".mine .date").html(res.data.mine.date);
+                $(".all .age").html(res.data.all.age);
+                $(".all .money").html(res.data.all.money);
+                $(".all .date").html(res.data.mine.date);
+            }
+        });
+
+        var annulus = echarts.init(document.getElementById('annulus'));
+        var annulus1 = echarts.init(document.getElementById('annulus1'));
+        var option = {
+            title: {
+                text: '80',
+                x: 'center',
+                y: 'center',
+                textStyle: {
+                    fontWeight: 'normal',
+                    color: '#0580f2',
+                    fontSize: '20'
+                }
+            },
+            color: ['rgba(176, 212, 251, 1)'],
+            series: [{
+                name: 'Line 1',
+                type: 'pie',
+                clockWise: true,
+                radius: ['50%', '66%'],
+                itemStyle: {
+                    normal: {
+                        label: {
+                            show: false
+                        },
+                        labelLine: {
+                            show: false
+                        }
+                    }
+                },
+                hoverAnimation: false,
+                data: []
+            }]
+        };
+        var all = {
+            title: {
+                text: '87',
+                x: 'center',
+                y: 'center',
+                textStyle: {
+                    fontWeight: 'normal',
+                    color: '#aadb4e',
+                    fontSize: '20'
+                }
+            },
+            color: ['rgba(176, 212, 251, 1)'],
+            series: [{
+                name: 'Line 1',
+                type: 'pie',
+                clockWise: true,
+                radius: ['50%', '66%'],
+                itemStyle: {
+                    normal: {
+                        label: {
+                            show: false
+                        },
+                        labelLine: {
+                            show: false
+                        }
+                    }
+                },
+                hoverAnimation: false,
+                data: []
+            }]
+        };
+        annulus.setOption(option);
+        annulus1.setOption(all);
+
+        //我的体质数据
+        ajaxRequest(AJAX_API.pie, "GET", {}, function (res) {
+            var res = res;
+            if (res.code === 200) {
+                annulus.setOption({
+                    series: [{
+                        data: [{
+                            value: res.value1,
+                            name: '完成',
+                            itemStyle: {
+                                normal: {
+                                    color: { // 完成的圆环的颜色
+                                        colorStops: [{
+                                            offset: 0,
+                                            color: '#27B4F2' // 0% 处的颜色
+                                        }, {
+                                            offset: 1,
+                                            color: '#27B4F2' // 100% 处的颜色
+                                        }]
+                                    },
+                                    label: {
+                                        show: false
+                                    },
+                                    labelLine: {
+                                        show: false
+                                    }
+                                }
+                            }
+                        }, {
+                            name: '未完成',
+                            value: res.value2,
+                            itemStyle: {
+                                normal: {
+                                    color: { // 完成的圆环的颜色
+                                        colorStops: [{
+                                            offset: 0,
+                                            color: '#E8F7FE' // 0% 处的颜色
+                                        }, {
+                                            offset: 1,
+                                            color: '#E8F7FE' // 100% 处的颜色
+                                        }]
+                                    },
+                                    label: {
+                                        show: false
+                                    },
+                                    labelLine: {
+                                        show: false
+                                    }
+                                }
+                            }
+                        }]
+                    }]
+                })
+            }
+        });
+
+        //国民体质数据
+        ajaxRequest(AJAX_API.pie, "GET", {}, function (res) {
+            var res = res;
+            if (res.code === 200) {
+                annulus1.setOption({
+                    series: [{
+                        data: [{
+                            value: res.value1,
+                            name: '完成',
+                            itemStyle: {
+                                normal: {
+                                    color: { // 完成的圆环的颜色
+                                        colorStops: [{
+                                            offset: 0,
+                                            color: '#aadb4e' // 0% 处的颜色
+                                        }, {
+                                            offset: 1,
+                                            color: '#aadb4e' // 100% 处的颜色
+                                        }]
+                                    },
+                                    label: {
+                                        show: false
+                                    },
+                                    labelLine: {
+                                        show: false
+                                    }
+                                }
+                            }
+                        }, {
+                            name: '未完成',
+                            value: res.value2,
+                            itemStyle: {
+                                normal: {
+                                    color: { // 完成的圆环的颜色
+                                        colorStops: [{
+                                            offset: 0,
+                                            color: '#E8F7FE' // 0% 处的颜色
+                                        }, {
+                                            offset: 1,
+                                            color: '#E8F7FE' // 100% 处的颜色
+                                        }]
+                                    },
+                                    label: {
+                                        show: false
+                                    },
+                                    labelLine: {
+                                        show: false
+                                    }
+                                }
+                            }
+                        }]
+                    }]
+                })
+            }
+        })
+
+    })
+</script>
+
+</html>

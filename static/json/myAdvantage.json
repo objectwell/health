@@ -1,0 +1,66 @@
+{
+  "code": 200,
+  "msg": "成功",
+  "data":{
+      "total":9,
+      "advantage":4,
+        "classify":    [
+          {
+            "title":"身高(164cm) 体重",
+            "value":"58",
+            "grade":"标准",
+            "description":"您的体型标准, 请继续保持!",
+            "evaluate":"您的身高体重标准属于正常水平,继续保持哦!",
+            "average":"55.3kg",
+            "explain":"该指标反映人体心血管系统和呼吸系统机能水平 , 与您的心血管疾病风险密切相关",
+            "rangeText":["瘦","偏瘦","标准","稍胖","肥胖"],
+            "rangeData":[48.3,50.9,65.9,71.1],
+            "rangeColor":["#fa0000","#fc9328","#ffca02","#a7dc50","#03affb"],
+            "rangeNub":5,
+              "rangeValue":86
+          },
+          {
+            "title":"台阶指数",
+            "value":"60",
+            "grade":"良好",
+            "description":"您的体型标准, 请继续保持!",
+            "evaluate":"您的身高体重标准属于正常水平,继续保持哦!",
+            "average":"55.3kg",
+            "explain":"该指标反映人体心血管系统和呼吸系统机能水平 , 与您的心血管疾病风险密切相关",
+            "rangeText":["瘦","偏瘦","标准","稍胖","肥胖"],
+            "rangeData":[48.3,50.9,65.9,71.1],
+            "rangeColor":["#fa0000","#fc9328","#ffca02","#a7dc50","#03affb"],
+            "rangeNub":5,
+              "rangeValue":22
+          },
+          {
+            "title":"纵跳",
+            "value":"1.3",
+            "grade":"优秀",
+            "description":"您的体型标准, 请继续保持!",
+            "evaluate":"您的身高体重标准属于正常水平,继续保持哦!",
+            "average":"55.3kg",
+            "explain":"该指标反映人体心血管系统和呼吸系统机能水平 , 与您的心血管疾病风险密切相关",
+            "rangeText":["瘦","偏瘦","标准","稍胖","肥胖"],
+            "rangeData":[48.3,50.9,65.9,71.1],
+            "rangeColor":["#fa0000","#fc9328","#ffca02","#a7dc50","#03affb"],
+            "rangeNub":5,
+              "rangeValue":86
+          },
+          {
+            "title":"坐位体前屈",
+            "value":"1.3",
+            "grade":"优秀",
+            "description":"您的体型标准, 请继续保持!",
+            "evaluate":"您的身高体重标准属于正常水平,继续保持哦!",
+            "average":"55.3kg",
+            "explain":"该指标反映人体心血管系统和呼吸系统机能水平 , 与您的心血管疾病风险密切相关",
+              "rangeText":["瘦","偏瘦","标准","稍胖","肥胖"],
+              "rangeData":[48.3,50.9,65.9,71.1],
+              "rangeColor":["#fa0000","#fc9328","#ffca02","#a7dc50","#03affb"],
+              "rangeNub":5,
+              "rangeValue":86
+          }
+        ]
+  }
+}
